@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <script type="text/javascript">
-    var myArray = [1, 8, 3, 4, 5]; // output should be 8
-    function returnLargest(arr) {
-      return largestNumber;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+<script type="text/javascript">
+  var myArray = [1, 8, 3, 4, 5]; // output should be 8
+  function returnLargest(arr) {
+    
+    let largestNumber = 0;
+
+    for(i=0; i<myArray.length; i++){
+      if(myArray[i]>largestNumber){
+        largestNumber = myArray[i];
+      }
     }
+    return largestNumber;
+  }
 
-    console.assert(returnLargest(myArray) == 8);
-  </script>
+  function returnLargest2(arr) {
+    let largestNumber = 0;
 
-  <body>
-    <h1>Check the console!</h1>
-  </body>
+    myArray.forEach( num => {
+      if(num > largestNumber){
+        largestNumber = num;
+      }
+      }
+    )
+    return largestNumber;
+  }
+
+function returnLargest3(arr) {
+  const largestNumberReducer = (largestNumber, currentNumber) => {
+    if(currentNumber > largestNumber){
+      largestNumber = currentNumber;
+    } 
+    return largestNumber;
+  }    
+
+    return myArray.reduce(largestNumberReducer, 0);    
+  }
+
+  console.assert(returnLargest(myArray) == 8);
+  console.assert(returnLargest2(myArray) == 8);
+  console.assert(returnLargest3(myArray) == 8);
+</script>
+
+<body>
+  <h1>Check the console!</h1>
+</body>
+
 </html>
